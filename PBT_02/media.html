@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Multimedia - Giới thiệu Sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        figure {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        figcaption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+        section {
+            margin: 30px 0;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .logo-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Trang Giới thiệu Sản phẩm Multimedia</h1>
+        <div class="logo-container">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="#4CAF50" stroke="#333" stroke-width="2"/>
+                <text x="50" y="60" text-anchor="middle" font-size="24" fill="white" font-weight="bold">MUL</text>
+            </svg>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Phần 1: Ảnh sản phẩm với figure và lazy loading -->
+        <section>
+            <h2>Bộ sưu tập sản phẩm nổi bật</h2>
+            <div class="gallery">
+                <figure>
+                    <img src="https://via.placeholder.com/300x200?text=Sản+phẩm+1" 
+                         alt="iPhone 16 Pro Max màu titan, điện thoại smartphone cao cấp"
+                         loading="lazy">
+                    <figcaption>iPhone 16 Pro Max - Màu Titan, Dung lượng 256GB. Thiết bị điện thoại thông minh cao cấp với camera chuyên nghiệp.</figcaption>
+                </figure>
+                
+                <figure>
+                    <img src="https://via.placeholder.com/300x200?text=Sản+phẩm+2" 
+                         alt="Laptop Dell XPS 15, màn hình OLED 4K, vi tính hiệu năng cao"
+                         loading="lazy">
+                    <figcaption>Dell XPS 15 - Màn hình OLED 4K, Processor Intel i9. Máy tính xách tay cho chuyên gia đồ họa.</figcaption>
+                </figure>
+                
+                <figure>
+                    <img src="https://via.placeholder.com/300x200?text=Sản+phẩm+3" 
+                         alt="Apple Watch Series 9, đồng hồ thông minh, theo dõi sức khỏe"
+                         loading="lazy">
+                    <figcaption>Apple Watch Series 9 - Đồng hồ thông minh với tính năng theo dõi sức khỏe toàn diện. Kết nối liền mạch với các thiết bị Apple.</figcaption>
+                </figure>
+            </div>
+        </section>
+        
+        <!-- Phần 2: Video YouTube nhúng -->
+        <section>
+            <h2>Video giới thiệu sản phẩm</h2>
+            <p>Video hướng dẫn chi tiết về các tính năng nổi bật:</p>
+            <iframe width="100%" height="400" 
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                    title="Video giới thiệu sản phẩm"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+            </iframe>
+        </section>
+        
+        <!-- Phần 3: Video tự host với controls, poster, và multiple sources -->
+        <section>
+            <h2>Demo video sản phẩm</h2>
+            <figure>
+                <video controls 
+                       poster="https://via.placeholder.com/800x400?text=Video+Poster"
+                       width="100%"
+                       style="max-width: 100%; height: auto;">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    <source src="https://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                    Trình duyệt của bạn không hỗ trợ phát video HTML5. Vui lòng nâng cập lên phiên bản mới hơn.
+                </video>
+                <figcaption>Video demo - Hướng dẫn sử dụng các tính năng chính của sản phẩm. Thời lượng: 2 phút 30 giây.</figcaption>
+            </figure>
+        </section>
+        
+        <!-- Phần 4: Audio element -->
+        <section>
+            <h2>Âm thanh giới thiệu</h2>
+            <p>Nghe bản ghi âm hướng dẫn chi tiết từ chuyên gia bán hàng:</p>
+            <figure>
+                <audio controls style="width: 100%; max-width: 100%;">
+                    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                    <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+                    Trình duyệt của bạn không hỗ trợ phát audio HTML5.
+                </audio>
+                <figcaption>Hướng dẫn âm thanh - Tìm hiểu chi tiết về các đặc tính kỹ thuật và lợi ích của sản phẩm.</figcaption>
+            </figure>
+        </section>
+        
+        <!-- Phần 5: SVG inline logo -->
+        <section>
+            <h2>Logo và Icon SVG</h2>
+            <p>Biểu tượng thương hiệu của chúng tôi:</p>
+            <div style="display: flex; gap: 30px; justify-content: center; margin: 30px 0; flex-wrap: wrap;">
+                <!-- SVG Logo 1: Hình vuông -->
+                <svg width="120" height="120" viewBox="0 0 120 120" style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                    <rect x="10" y="10" width="100" height="100" fill="#FF6B6B" stroke="#333" stroke-width="2" rx="5"/>
+                    <text x="60" y="70" text-anchor="middle" font-size="18" fill="white" font-weight="bold">SHOP</text>
+                </svg>
+                
+                <!-- SVG Logo 2: Hình tròn -->
+                <svg width="120" height="120" viewBox="0 0 120 120" style="border: 1px solid #ddd; padding: 10px; border-radius: 50%;">
+                    <circle cx="60" cy="60" r="55" fill="#4ECDC4" stroke="#333" stroke-width="2"/>
+                    <path d="M 60 35 L 75 65 L 45 65 Z" fill="white" stroke="white" stroke-width="1"/>
+                </svg>
+                
+                <!-- SVG Logo 3: Hình kết hợp -->
+                <svg width="120" height="120" viewBox="0 0 120 120" style="border: 1px solid #ddd; padding: 10px; border-radius: 5px;">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="10" y="10" width="100" height="100" fill="url(#grad1)" rx="10"/>
+                    <circle cx="60" cy="60" r="30" fill="white" opacity="0.3"/>
+                    <circle cx="40" cy="45" r="8" fill="white"/>
+                    <circle cx="80" cy="45" r="8" fill="white"/>
+                    <path d="M 40 65 Q 60 80 80 65" stroke="white" stroke-width="3" fill="none"/>
+                </svg>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <hr>
+        <p>&copy; 2026 Cửa hàng E-Commerce. Tất cả quyền được bảo lưu.</p>
+    </footer>
+</body>
+</html>
