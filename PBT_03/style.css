@@ -22,7 +22,7 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation Styling */
+/* Navigation Styling - Descendant Selector */
 nav ul {
     list-style: none;
     padding: 0;
@@ -32,7 +32,8 @@ nav ul {
     gap: 20px;
 }
 
-nav a {
+/* Navigation Links - Multiple Selectors */
+nav ul li a {
     color: white;
     text-decoration: none;
     padding: 10px 15px;
@@ -40,13 +41,15 @@ nav a {
     transition: all 0.3s ease;
 }
 
-nav a:hover {
+/* Pseudo-class: :hover */
+nav ul li a:hover {
     color: #ffd700;
     border-bottom: 3px solid #ffd700;
     text-decoration: underline;
 }
 
-nav a.active {
+/* Class Selector: .active */
+nav ul li a.active {
     border-bottom: 3px solid #ffd700;
     color: #ffd700;
     font-weight: bold;
@@ -59,7 +62,7 @@ main {
     padding: 0 20px;
 }
 
-/* Section Styling */
+/* Section Styling - Element Selector */
 section {
     background: white;
     padding: 30px;
@@ -127,11 +130,12 @@ table tbody tr {
     transition: background-color 0.2s ease;
 }
 
-/* Zebra Striping */
+/* Pseudo-class: nth-child (Zebra Striping) */
 table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+/* Pseudo-class: :hover */
 table tbody tr:hover {
     background-color: #e8f5e9;
 }

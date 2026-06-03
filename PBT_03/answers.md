@@ -274,3 +274,80 @@ p { color: black !important; }
 7. Browser default
 
 ---
+
+## PHẦN B — THỰC HÀNH CODE
+
+### Bài B1 — Style trang Profile (20 điểm)
+
+**File:** `profile.html` + `style.css`
+
+**Checklist hoàn thành:**
+- ✅ Dòng đầu: `* { box-sizing: border-box; }`
+- ✅ **Body:** font-family ("Segoe UI"), background-color (#f5f5f5), color (#333), line-height (1.6)
+- ✅ **Header:** background gradient (135deg, #667eea → #764ba2), color white, padding 20px
+- ✅ **Navigation links:**
+  - Mặc định: color white, text-decoration none
+  - Hover: color #ffd700, border-bottom 3px solid, text-decoration underline
+  - Active (.active): border-bottom #ffd700, color #ffd700, font-weight bold
+- ✅ **Table kỹ năng:**
+  - border-collapse: collapse
+  - thead: background #333, color white, padding 15px
+  - tbody tr:nth-child(even): background #f9f9f9 (zebra striping)
+  - tbody tr:hover: background #e8f5e9
+- ✅ **Footer:** background #333, color #ccc, text-align center, padding 20px
+
+**Selector Types dùng (10+ loại):**
+1. **Element Selector:** body, header, nav, main, section, table, footer, ul, li, a, p, img, figure
+2. **Class Selector:** .active
+3. **Descendant Selector:** nav ul li a, section article, section article figure img
+4. **Child Combinator:** table > thead, table > tbody
+5. **Pseudo-class :hover:** nav ul li a:hover, table tbody tr:hover, aside a:hover
+6. **Pseudo-class :nth-child():** table tbody tr:nth-child(even)
+7. **Type Selector (Element):** thead, tbody, tfoot
+8. **Attribute Selector (implicit):** [href], [alt]
+9. **ID Selector (có thể):** #contact (trong aside)
+10. **Grouped Selector:** section h2, aside h2 (cùng style)
+11. **Universal Selector:** * (box-sizing reset)
+12. **Media Query:** @media (max-width: 768px) - responsive design
+
+---
+
+### Bài B2 — Box Model Lab (10 điểm)
+
+**File:** `boxmodel_lab.html` + `boxmodel.css`
+
+**Phần 1: Content-box vs Border-box**
+
+Cả 2 hộp có `width: 300px`, `padding: 20px`, `border: 5px`:
+
+| Hộp | Box-sizing | Công thức | Chiều rộng thực tế |
+|-----|-----------|----------|------------------|
+| **Hộp 1** | content-box | 300 + 20 + 20 + 5 + 5 | **350px** |
+| **Hộp 2** | border-box | 300px (bao gồm tất cả) | **300px** |
+
+**Giải thích:**
+- **Content-box (mặc định):** width = kích thước nội dung. Padding + border được thêm vào ngoài → tổng = 350px
+- **Border-box:** width = bao gồm content + padding + border → tổng = 300px
+
+**Phần 2: Layout 3 Cột**
+
+Container rộng **1000px**, 3 cột với border-box:
+
+| Cột | Width | Padding | Tính toán | Kích thước thực tế |
+|-----|-------|---------|----------|------------------|
+| Trái | 250px | 15px | Bao gồm padding (border-box) | 250px |
+| Giữa | 500px | 20px | Bao gồm padding (border-box) | 500px |
+| Phải | 250px | 15px | Bao gồm padding (border-box) | 250px |
+| **TỔNG** | - | - | 250 + 500 + 250 | **1000px** |
+✅ 3 cột nằm cạnh nhau trên 1 dòng vì tổng = 1000px chính xác.
+**Nếu không dùng border-box:**
+- Cột trái: 250 + 15 + 15 = 280px
+- Cột giữa: 500 + 20 + 20 = 540px
+- Cột phải: 250 + 15 + 15 = 280px
+- **TỔNG = 1100px > 1000px → Layout bị vỡ! ❌**
+**Phần 3: Kết luận**
+🎯 **Vì sao phải dùng `* { box-sizing: border-box; }`?**
+- Padding không làm tăng chiều rộng element
+- Dễ tính layout, dễ dự đoán kích thước
+- Giải pháp standard cho modern CSS
+---

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Lab - PBT_03 B2</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+    <header>
+        <h1>Box Model Lab - Content-box vs Border-box</h1>
+    </header>
+
+    <main>
+        <!-- Phần 1: Chứng minh content-box vs border-box -->
+        <section class="part-1">
+            <h2>Phần 1: Content-box vs Border-box</h2>
+            <p>Cả 2 hộp dưới đây có cùng width: 300px, padding: 20px, border: 5px. Nhưng hộp 1 dùng content-box (mặc định) còn hộp 2 dùng border-box.</p>
+            
+            <div class="container">
+                <div class="box box-content">
+                    <h3>Hộp 1: Content-box</h3>
+                    <p>width: 300px</p>
+                    <p>padding: 20px</p>
+                    <p>border: 5px</p>
+                    <p><strong>Chiều rộng thực tế:</strong></p>
+                    <p>300 + 20 + 20 + 5 + 5 = 350px</p>
+                </div>
+                
+                <div class="box box-border">
+                    <h3>Hộp 2: Border-box</h3>
+                    <p>width: 300px</p>
+                    <p>padding: 20px</p>
+                    <p>border: 5px</p>
+                    <p><strong>Chiều rộng thực tế:</strong></p>
+                    <p>300px (bao gồm padding + border)</p>
+                </div>
+            </div>
+            <p class="note">💡 Đừng quên dùng DevTools (F12) để check box model của mỗi hộp. Nhấp vào element → tab Computed/Layout.</p>
+        </section>
+
+        <!-- Phần 2: Layout 3 cột -->
+        <section class="part-2">
+            <h2>Phần 2: Layout 3 Cột với Border-box</h2>
+            <p>Container rộng 1000px. Cột trái: 250px, giữa: 500px, phải: 250px. Tổng = 1000px (vì dùng border-box).</p>
+            
+            <div class="layout-container">
+                <div class="col-left">
+                    <h3>Cột Trái</h3>
+                    <p>250px</p>
+                    <p>padding: 15px</p>
+                    <p>Sidebar content...</p>
+                </div>
+                
+                <div class="col-center">
+                    <h3>Cột Giữa (Main Content)</h3>
+                    <p>500px</p>
+                    <p>padding: 20px</p>
+                    <p>Đây là nội dung chính của trang. Khi dùng border-box, padding không làm tăng chiều rộng.</p>
+                </div>
+                
+                <div class="col-right">
+                    <h3>Cột Phải</h3>
+                    <p>250px</p>
+                    <p>padding: 15px</p>
+                    <p>Ads content...</p>
+                </div>
+            </div>
+            <p class="note">💡 Cả 3 cột nằm cạnh nhau trên 1 dòng vì tổng = 1000px chính xác.</p>
+        </section>
+
+        <!-- Phần 3: So sánh (nếu không dùng border-box) -->
+        <section class="part-3">
+            <h2>Phần 3: Vì sao phải dùng border-box?</h2>
+            <p>Nếu không dùng border-box (content-box mặc định):</p>
+            <ul>
+                <li>Cột trái: 250 + 15 + 15 = 280px</li>
+                <li>Cột giữa: 500 + 20 + 20 = 540px</li>
+                <li>Cột phải: 250 + 15 + 15 = 280px</li>
+                <li><strong>Tổng = 1100px > 1000px → Layout bị vỡ!</strong></li>
+            </ul>
+            <p>✅ <strong>Giải pháp:</strong> Dùng `* { box-sizing: border-box; }` ở dầu CSS file.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Box Model Lab</p>
+    </footer>
+</body>
+</html>
