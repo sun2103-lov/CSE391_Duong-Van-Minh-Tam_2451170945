@@ -41,3 +41,108 @@
 Ví dụ:
 - Cách 1: Ảnh icon sản phẩm trên trang danh sách, ảnh trang trí banner.
 - Cách 2: Ảnh chi tiết sản phẩm với figcaption mô tả thông số, ảnh biểu đồ doanh thu với figcaption giải thích số liệu.
+
+---
+## PHẦN C — PHÂN TÍCH & SUY LUẬN
+### Câu C1 — Debug Form (10 điểm)
+**8 lỗi tìm thấy:**
+
+**Lỗi 1: Dòng 1 — Form không có method và action attribute**
+- Sửa: `<form method="POST" action="#">`
+
+**Lỗi 2: Dòng 2 — Input "Tên" không có label with for attribute**
+- Sửa: `<label for="name">Tên:</label> <input type="text" id="name" name="name" required>`
+
+**Lỗi 3: Dòng 4 — Input "Email" không có label, id, name attribute**
+- Sửa: `<label for="email">Email:</label> <input type="email" id="email" name="email" required>`
+
+**Lỗi 4: Dòng 6 — Input "Password" không có label, id, name, minlength attribute**
+- Sửa: `<label for="password">Mật khẩu:</label> <input type="password" id="password" name="password" required minlength="8">`
+
+**Lỗi 5: Dòng 7 — Input "Confirm Password" không có label, id, name**
+- Sửa: `<label for="confirm_password">Nhập lại mật khẩu:</label> <input type="password" id="confirm_password" name="confirm_password" required minlength="8">`
+
+**Lỗi 6: Dòng 9 — Input "Phone" dùng type="text" thay vì type="tel", thiếu pattern và validation**
+- Sửa: `<label for="phone">Điện thoại:</label> <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>`
+
+**Lỗi 7: Dòng 11-13 — Select "Thành phố" không có label, id, name attribute**
+- Sửa: 
+```html
+<label for="city">Thành phố:</label>
+<select id="city" name="city" required>
+    <option value="">-- Chọn --</option>
+    <option value="hanoi">Hà Nội</option>
+    <option value="hcm">TP.HCM</option>
+</select>
+```
+
+**Lỗi 8: Dòng 15-17 — Label checkbox không có for attribute, checkbox không có id, name**
+- Sửa: 
+```html
+<label for="terms">
+    <input type="checkbox" id="terms" name="terms" required> Tôi đồng ý điều khoản
+</label>
+```
+
+**Bonus: Dòng 19 — Nên dùng `<button type="submit">Gửi</button>` thay vì `<input type="submit">`** để dễ styling và semantic hơn.
+
+---
+
+### Câu C2 — Chiến lược Validation Form Ngân hàng (10 điểm)
+
+**Yêu cầu:** Form đăng ký ngân hàng số cần validate:
+- CMND/CCCD: đúng 12 chữ số
+- Số tài khoản: 10-15 chữ số  
+- Email: bắt buộc, đúng format
+
+**Chiến lược Validation:**
+
+1. **CMND/CCCD (12 chữ số):**
+   - HTML: `<input type="text" id="id_number" name="id_number" pattern="[0-9]{12}" required minlength="12" maxlength="12" title="CMND/CCCD phải có đúng 12 chữ số">`
+   - Lý do: Pattern `[0-9]{12}` chỉ chấp nhận 12 chữ số, minlength và maxlength giới hạn độ dài, required bắt buộc nhập
+
+2. **Số tài khoản (10-15 chữ số):**
+   - HTML: `<input type="text" id="account_number" name="account_number" pattern="[0-9]{10,15}" required title="Số tài khoản phải có 10-15 chữ số">`
+   - Lý do: Pattern `[0-9]{10,15}` cho phép 10 đến 15 chữ số, flexible với các ngân hàng khác nhau
+
+3. **Email (bắt buộc, đúng format):**
+   - HTML: `<input type="email" id="email" name="email" required title="Nhập email hợp lệ">`
+   - Lý do: type="email" tự động validate format email, required bắt buộc
+
+4. **HTML5 Validation vs JavaScript:**
+   - HTML5 validation đủ cho hầu hết trường hợp (client-side validation)
+   - Luôn cần server-side validation vì user có thể disable JavaScript hoặc modify request
+   - Thông báo lỗi từ browser: "Please match the requested format" (CMND), "Please enter an email address" (Email)
+
+5. **UX tốt:**
+   - Thêm `<label>` cho mỗi input để người dùng biết input là gì
+   - Thêm `placeholder` để gợi ý định dạng: "000000000000" (CMND)
+   - Thêm `title` để giải thích khi hover hoặc có lỗi
+   - Dùng `<fieldset>` + `<legend>` để nhóm form thành các phần logic
+
+**Ví dụ code hoàn chỉnh:**
+```html
+<form method="POST" action="#" novalidate>
+    <fieldset>
+        <legend>Thông tin cá nhân</legend>
+        
+        <label for="id_number">CMND/CCCD:</label>
+        <input type="text" id="id_number" name="id_number" 
+               pattern="[0-9]{12}" required minlength="12" maxlength="12"
+               placeholder="000000000000"
+               title="Nhập 12 chữ số CMND/CCCD">
+        
+        <label for="account_number">Số tài khoản:</label>
+        <input type="text" id="account_number" name="account_number"
+               pattern="[0-9]{10,15}" required
+               placeholder="1234567890"
+               title="Nhập 10-15 chữ số">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required
+               placeholder="user@example.com">
+    </fieldset>
+    
+    <button type="submit">Đăng ký</button>
+</form>
+```
