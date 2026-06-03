@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specificity Battle - PBT_03 B3</title>
+    <link rel="stylesheet" href="specificity.css">
+</head>
+<body>
+    <header>
+        <h1>Specificity Battle</h1>
+        <p>Xem CSS rule nào "thắng" khi có nhiều rule cùng target 1 element</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Phần 1: Element Demo</h2>
+            <p id="demo" class="text highlight">
+                <strong>Đây là text color được áp dụng bởi rule nào?</strong>
+            </p>
+            <p class="explanation">Kiểm tra DevTools để thấy CSS rule nào được áp dụng (có dấu ✓) và rule nào bị gạch bỏ (strikethrough)</p>
+        </section>
+
+        <section>
+            <h2>Phần 2: CSS Rules Applied</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thứ tự</th>
+                        <th>CSS Rule</th>
+                        <th>Specificity</th>
+                        <th>Màu (Dự đoán)</th>
+                        <th>Thắng?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><code>p { color: red; }</code></td>
+                        <td>(0, 0, 1)</td>
+                        <td style="color: red;">Red</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><code>.text { color: blue; }</code></td>
+                        <td>(0, 1, 0)</td>
+                        <td style="color: blue;">Blue</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><code>.highlight { color: green; }</code></td>
+                        <td>(0, 1, 0)</td>
+                        <td style="color: green;">Green</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><code>p.text { color: purple; }</code></td>
+                        <td>(0, 1, 1)</td>
+                        <td style="color: purple;">Purple</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><code>p.highlight { color: orange; }</code></td>
+                        <td>(0, 1, 1)</td>
+                        <td style="color: orange;">Orange</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td><code>p.text.highlight { color: brown; }</code></td>
+                        <td>(0, 2, 0)</td>
+                        <td style="color: brown;">Brown</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td><code>#demo { color: pink; }</code></td>
+                        <td>(1, 0, 0)</td>
+                        <td style="color: pink;">Pink</td>
+                        <td>✅ THẮNG!</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td><code>p#demo { color: cyan; }</code></td>
+                        <td>(1, 0, 1)</td>
+                        <td style="color: cyan;">Cyan</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td><code>p.text#demo { color: teal; }</code></td>
+                        <td>(1, 1, 1)</td>
+                        <td style="color: teal;">Teal</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td><code>.text.highlight#demo { color: gold; }</code></td>
+                        <td>(1, 2, 0)</td>
+                        <td style="color: gold;">Gold</td>
+                        <td>❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Giải thích</h2>
+            <p><strong>Rule 7</strong> (`#demo { color: pink; }`) <strong>THẮNG</strong> vì:</p>
+            <ul>
+                <li>ID selector có specificity cao nhất: (1, 0, 0) = 100 điểm</li>
+                <li>Các rule khác có specificity thấp hơn:
+                    <ul>
+                        <li>Rules 1-3: (0, 0, 1) và (0, 1, 0) = 1 hoặc 10 điểm</li>
+                        <li>Rules 4-6: (0, 1, 1) hoặc (0, 2, 0) = 11 hoặc 20 điểm</li>
+                        <li>Rule 8: (1, 0, 1) = 101 điểm, nhưng xuất hiện sau Rule 7</li>
+                        <li>Rules 9-10: (1, 1, 1) hoặc (1, 2, 0) = 111 hoặc 120 điểm, nhưng xuất hiện sau</li>
+                    </ul>
+                </li>
+                <li><strong>Nguyên tắc:</strong> Specificity cao hơn → chiến thắng. Nếu bằng nhau → rule xuất hiện sau thắng (cascade)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Câu hỏi</h2>
+            <p><strong>1. Nếu chuyển đổi thứ tự CSS (Rule 7 ở cuối thay vì ở giữa), kết quả có thay đổi không?</strong></p>
+            <p>Trả lời: <strong>KHÔNG thay đổi!</strong> Vì Rule 7 có ID selector (specificity 100), cao hơn tất cả các rule khác. Vị trí không quan trọng khi specificity khác nhau.</p>
+
+            <p><strong>2. Nếu xóa Rule 7 (#demo), rule nào sẽ thắng?</strong></p>
+            <p>Trả lời: <strong>Rule 6</strong> (`p.text.highlight { color: brown; }`) hoặc <strong>Rules 9-10</strong> nếu chúng xuất hiện sau. Cùng specificity thì rule xuất hiện sau thắng.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>💡 Dùng DevTools (F12) → Inspect → Styles tab để thấy CSS cascade & specificity</p>
+    </footer>
+</body>
+</html>

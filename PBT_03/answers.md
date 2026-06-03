@@ -350,4 +350,44 @@ Container rộng **1000px**, 3 cột với border-box:
 - Padding không làm tăng chiều rộng element
 - Dễ tính layout, dễ dự đoán kích thước
 - Giải pháp standard cho modern CSS
+
+---
+
+### Bài B3 — Specificity Battle (10 điểm)
+
+**File:** `specificity.html` + `specificity.css`
+
+**Element cần style:** `<p id="demo" class="text highlight">Đây là text color...</p>`
+
+**10 CSS Rules tăng dần Specificity:**
+
+| # | CSS Rule | Specificity | Tính toán | Thắng? |
+|---|----------|-------------|----------|--------|
+| 1 | `p { color: red; }` | (0, 0, 1) | 0×100 + 0×10 + 1 = **1** | ❌ |
+| 2 | `.text { color: blue; }` | (0, 1, 0) | 0×100 + 1×10 + 0 = **10** | ❌ |
+| 3 | `.highlight { color: green; }` | (0, 1, 0) | 0×100 + 1×10 + 0 = **10** | ❌ |
+| 4 | `p.text { color: purple; }` | (0, 1, 1) | 0×100 + 1×10 + 1 = **11** | ❌ |
+| 5 | `p.highlight { color: orange; }` | (0, 1, 1) | 0×100 + 1×10 + 1 = **11** | ❌ |
+| 6 | `p.text.highlight { color: brown; }` | (0, 2, 0) | 0×100 + 2×10 + 0 = **20** | ❌ |
+| 7 | `#demo { color: pink; }` | (1, 0, 0) | 1×100 + 0×10 + 0 = **100** | ✅ **THẮNG!** |
+| 8 | `p#demo { color: cyan; }` | (1, 0, 1) | 1×100 + 0×10 + 1 = **101** | ❌ (sau rule 7) |
+| 9 | `p.text#demo { color: teal; }` | (1, 1, 1) | 1×100 + 1×10 + 1 = **111** | ❌ (sau rule 7) |
+| 10 | `.text.highlight#demo { color: gold; }` | (1, 2, 0) | 1×100 + 2×10 + 0 = **120** | ❌ (sau rule 7) |
+
+**Đáp án:**
+
+✅ **Rule 7** (`#demo { color: pink; }`) **THẮNG** → **Màu: PINK**
+
+**Giải thích:**
+- ID selector có specificity (1, 0, 0) = 100 điểm
+- Cao hơn tất cả các rule khác (1-6 chỉ có 20 điểm tối đa)
+- Dù Rules 8-10 có specificity cao hơn (101-120), nhưng chúng xuất hiện **sau** Rule 7 trong CSS file
+- **Nguyên tắc:** Specificity cao hơn → chiến thắng. Không cần quan tâm thứ tự nếu specificity khác biệt rõ ràng.
+
+**Thí nghiệm:**
+1. **Nếu chuyển Rule 7 xuống cuối CSS file:** Kết quả **KHÔNG thay đổi**, vẫn màu PINK (vì specificity 100 > 120 không, nhưng 100 > 101 nếu Rule 8 là rule tiếp theo)
+   - Thực tế: Cùng ID thì cascade (thứ tự) quyết định
+2. **Nếu xóa Rule 7:** Rule 10 (specificity 120) sẽ thắng → **Màu: GOLD**
+3. **Nếu thêm `!important` vào Rule 1:** Rule 1 sẽ thắng → **Màu: RED** (`!important` override tất cả)
+
 ---

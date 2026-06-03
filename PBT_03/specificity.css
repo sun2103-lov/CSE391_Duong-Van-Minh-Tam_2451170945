@@ -1,0 +1,165 @@
+/* Reset & Global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+section {
+    background: white;
+    padding: 30px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #667eea;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+code {
+    background: #f5f5f5;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table thead {
+    background: #667eea;
+    color: white;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background: #e8f5e9;
+}
+
+ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+ul li {
+    margin: 8px 0;
+}
+
+ul ul {
+    margin: 5px 0;
+    padding-left: 30px;
+}
+
+footer {
+    background: #333;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* ============================================================
+   SPECIFICITY BATTLE: 10 CSS Rules với Specificity tăng dần
+   ============================================================ */
+
+/* Rule 1: Specificity (0, 0, 1) = 1 điểm */
+p {
+    color: red;
+}
+
+/* Rule 2: Specificity (0, 1, 0) = 10 điểm */
+.text {
+    color: blue;
+}
+
+/* Rule 3: Specificity (0, 1, 0) = 10 điểm */
+.highlight {
+    color: green;
+}
+
+/* Rule 4: Specificity (0, 1, 1) = 11 điểm */
+p.text {
+    color: purple;
+}
+
+/* Rule 5: Specificity (0, 1, 1) = 11 điểm */
+p.highlight {
+    color: orange;
+}
+
+/* Rule 6: Specificity (0, 2, 0) = 20 điểm */
+p.text.highlight {
+    color: brown;
+}
+
+/* Rule 7: Specificity (1, 0, 0) = 100 điểm ← THẮNG! */
+#demo {
+    color: pink;
+}
+
+/* Rule 8: Specificity (1, 0, 1) = 101 điểm */
+p#demo {
+    color: cyan;
+}
+
+/* Rule 9: Specificity (1, 1, 1) = 111 điểm */
+p.text#demo {
+    color: teal;
+}
+
+/* Rule 10: Specificity (1, 2, 0) = 120 điểm */
+.text.highlight#demo {
+    color: gold;
+}
+
+/* Extra styles for explanation section */
+section p.explanation {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 15px;
+    margin: 20px 0;
+    font-style: italic;
+    color: #856404;
+}
