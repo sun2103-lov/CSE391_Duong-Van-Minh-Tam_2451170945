@@ -107,6 +107,23 @@ Các lỗi đã xử lý:
 - Đóng thẻ `<footer>` đúng
 
 ### B4 — Phân tích trang web thật
+
+Chọn website: `thegioididong.com`.
+1. Semantic HTML5 được sử dụng:
+   - `<header>`: phần đầu trang chứa logo, thanh tìm kiếm, giỏ hàng và menu (ảnh `B4_1_header.png`).
+   - `<section>`: dùng để nhóm các khối nội dung chính như breadcrumb và khu vực sản phẩm (ảnh `B4_1_section.png`).
+   - `<footer>`: chân trang chứa thông tin hỗ trợ, hotline và danh sách liên kết (ảnh `B4_1_footer.png`).
+2. Các thẻ chưa dùng semantic đúng:
+   - Các menu điều hướng còn dùng nhiều `<div>` thay vì dùng `<nav>` và `<ul>`/`<li>` để định nghĩa rõ vùng điều hướng.
+   - Breadcrumb có thể dùng `<nav aria-label="breadcrumb">` nhưng trong ảnh chỉ thấy `section`/`div` chứa đường dẫn.
+   - Footer chứa thông tin liên hệ và các mục hỗ trợ trong `<div>` thay vì dùng `<address>` cho nội dung địa chỉ và số điện thoại.
+3. Table trong trang:
+   - không thấy phần tử `<table>`, nên không thể xác định được nội dung table hoặc kiểm tra `thead`/`tbody`.
+4. Form tìm kiếm:
+   - `<form action="/tim-kiem" onsubmit="return suggestSearch(event)" class="header_search">`.
+   - Form sử dụng `<input id="skw" type="text" name="key" class="input-search js-promote">` để nhập từ khóa.
+   - form tìm kiếm thường dùng `GET`.
+
 ## PHẦN C — SUY LUẬN
 
 ### C1 — Cấu trúc HTML chi tiết sản phẩm
@@ -179,4 +196,3 @@ Một lợi ích kỹ thuật rõ ràng là accessibility: người dùng đọc
 Ví dụ cụ thể: một bài blog dùng `<article>` chứa tiêu đề, tác giả, nội dung sẽ cho phép trình đọc màn hình chuyển trực tiếp đến nội dung chính; nếu chỉ dùng `<div>`, trình đọc sẽ không biết đoạn nào là bài viết.
 
 Một trường hợp `<div>` vẫn phù hợp là khi tạo layout phụ hoặc wrapper để căn lề, gộp các thành phần mà không có ý nghĩa semantic riêng. Ví dụ một grid container không mang ý nghĩa nội dung sâu thì dùng `<div class="grid">` là hợp lý.
-
