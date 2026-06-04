@@ -1,0 +1,124 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f4f4;
+}
+
+/* GRID LAYOUT CHÍNH */
+
+.container{
+    display:grid;
+
+    grid-template-columns:
+        200px
+        minmax(500px, 1fr)
+        200px;
+
+    grid-template-areas:
+        "header header header"
+        "hero hero hero"
+        "sidebar main ads"
+        "footer footer footer";
+
+    gap:20px;
+    padding:20px;
+}
+
+/* HEADER */
+
+.header{
+    grid-area:header;
+
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+/* HERO */
+
+.hero{
+    grid-area:hero;
+
+    background:#ffde59;
+    text-align:center;
+    padding:40px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    grid-area:sidebar;
+
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
+
+/* MAIN CONTENT */
+
+.main{
+    grid-area:main;
+
+    display:grid;
+    grid-template-columns:repeat(3, minmax(150px,1fr));
+    gap:20px;
+}
+
+/* PRODUCT CARD */
+
+.card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+
+    box-shadow:0 2px 5px rgba(0,0,0,.15);
+
+    padding-bottom:15px;
+}
+
+.card img{
+    width:100%;
+    display:block;
+}
+
+.card h3,
+.card p{
+    padding:10px;
+}
+
+/* BONUS */
+
+.featured{
+    grid-column:span 2;
+}
+
+/* ADS */
+
+.ads{
+    grid-area:ads;
+
+    background:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+.ads img{
+    width:100%;
+}
+
+/* FOOTER */
+
+.footer{
+    grid-area:footer;
+
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
