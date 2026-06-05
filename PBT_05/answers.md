@@ -148,3 +148,10 @@ style.css
 Sau đó HTML sẽ liên kết tới file:
 
 <link rel="stylesheet" href="style.css">
+
+### Bài B3 (20đ) — SCSS Refactor
+scss/
+├── _variables.scss
+├── _mixins.scss
+├── _components.scss
+└── style.scss

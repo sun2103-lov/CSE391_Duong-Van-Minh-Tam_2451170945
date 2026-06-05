@@ -1,0 +1,76 @@
+/* VARIABLES */
+
+$primary-color: #007bff;
+$secondary-color: #f4f4f4;
+$font-primary: Arial, sans-serif;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 32px;
+
+/* MIXINS */
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin card-shadow {
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+
+@mixin respond-to($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+/* COMPONENTS */
+
+body{
+    font-family: $font-primary;
+    background: $secondary-color;
+}
+
+.navbar{
+    @include flex-center;
+    gap: $spacing-md;
+}
+
+.card{
+    padding: $spacing-md;
+    background: white;
+
+    @include card-shadow;
+
+    .card-image{
+        width: 100%;
+    }
+
+    .card-title{
+        font-size: 20px;
+    }
+
+    &:hover{
+        transform: translateY(-5px);
+    }
+
+    &.featured{
+        border: 2px solid $primary-color;
+    }
+}
+
+.products{
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include respond-to($breakpoint-tablet){
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    @include respond-to($breakpoint-desktop){
+        grid-template-columns: repeat(4,1fr);
+    }
+}
