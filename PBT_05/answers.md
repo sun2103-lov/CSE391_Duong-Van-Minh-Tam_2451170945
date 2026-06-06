@@ -155,3 +155,27 @@ scss/
 ├── _mixins.scss
 ├── _components.scss
 └── style.scss
+## PHẦN C — PHÂN TÍCH 
+### Câu C1 (10đ) — Phân tích trang web thực
+Navigation thay đổi thế nào?
+
+Mobile: menu thu gọn, nhiều thành phần bị ẩn.
+Tablet: hiển thị nhiều chức năng hơn.
+Desktop: sidebar và navigation đầy đủ.
+
+Lưới content thay đổi mấy cột?
+
+Mobile: 1 cột.
+Tablet: 2-3 cột.
+Desktop: 5-6 cột.
+
+Elements nào bị ẩn trên mobile?
+
+Sidebar đầy đủ.
+Một số nút chức năng phụ.
+Một phần navigation.
+
+Font size có thay đổi không?
+
+Có thay đổi nhẹ để phù hợp từng kích thước màn hình.
+Trên mobile thường nhỏ hơn desktop.
