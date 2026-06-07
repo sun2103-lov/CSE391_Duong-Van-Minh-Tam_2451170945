@@ -68,3 +68,58 @@ Class	Ý nghĩa
 .container	Chiều rộng cố định theo từng breakpoint
 .container-fluid	Luôn rộng 100% màn hình
 .container-md	100% khi < 768px, từ ≥ 768px mới có chiều rộng cố định
+### PHẦN C — PHÂN TÍCH (20 điểm)
+
+#### Câu C1 (10đ) — Tùy biến Bootstrap
+Đổi màu $primary thành #E63946
+Quy trình:
+Cài Node.js và SASS.
+Tải source Bootstrap.
+Trong file _variables.scss, sửa:
+$primary: #E63946;
+Compile lại Bootstrap:
+sass custom.scss custom.css
+hoặc build bằng Bootstrap CLI.
+Link file CSS mới vào dự án.
+Tại sao không nên:
+.btn-primary{
+    background:red;
+}
+Chỉ đổi màu của .btn-primary.
+
+#### Câu C2 (10đ) — So sánh
+CSS thuần
+Muốn làm Navbar responsive + Product Card phải tự viết:
+Flexbox/Grid
+Responsive Media Queries
+Spacing
+Hover
+Card style
+Khoảng 50-100 dòng CSS.
+
+Bootstrap
+Chỉ cần:
+<nav class="navbar navbar-expand-lg">
+<div class="card">
+Gần như không cần CSS riêng.
+
+| Tiêu chí             | CSS Thuần | Bootstrap                 |
+| -------------------- | --------- | ------------------------- |
+| Số dòng CSS          | Nhiều     | Ít                        |
+| Thời gian phát triển | Chậm hơn  | Nhanh hơn                 |
+| Responsive           | Tự viết   | Có sẵn                    |
+| Tùy biến             | Cao       | Bị giới hạn bởi framework |
+| Bảo trì              | Khó hơn   | Dễ hơn                    |
+
+Khi nào NÊN dùng Bootstrap?
+✅ Landing Page
+✅ Dashboard Admin
+✅ Website doanh nghiệp
+✅ Prototype nhanh
+✅ Dự án nhỏ và vừa
+
+Khi nào KHÔNG NÊN dùng Bootstrap?
+❌ Giao diện độc đáo, thiết kế riêng hoàn toàn
+❌ Website cần tối ưu kích thước CSS
+❌ Dự án lớn có Design System riêng
+❌ Khi muốn kiểm soát toàn bộ UI bằng CSS thuần hoặc framework khác
