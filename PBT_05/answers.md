@@ -178,4 +178,131 @@ Một phần navigation.
 Font size có thay đổi không?
 
 Có thay đổi nhẹ để phù hợp từng kích thước màn hình.
+### Câu C2 (10đ) — Thiết kế Responsive Strategy
 Trên mobile thường nhỏ hơn desktop.
+1. Wireframe Mobile (<768px)
+Hero vẫn hiển thị full width.
+Grid ảnh: 1 cột.
+Form đặt bàn đặt trên bản đồ để người dùng thao tác ngay.
+Header chỉ hiện logo + icon điện thoại.
+Có thể ẩn bớt slogan/menu dài nếu có.
++------------------+
+| Logo    ☎        |
++------------------+
+
++------------------+
+|                  |
+|   HERO IMAGE     |
+|                  |
++------------------+
+
++------------------+
+| Ảnh món 1        |
++------------------+
+| Ảnh món 2        |
++------------------+
+| Ảnh món 3        |
++------------------+
+| Ảnh món 4        |
++------------------+
+| Ảnh món 5        |
++------------------+
+| Ảnh món 6        |
++------------------+
+
++------------------+
+| FORM ĐẶT BÀN     |
+| Ngày             |
+| Giờ              |
+| Số người         |
+| Ghi chú          |
++------------------+
+
++------------------+
+| GOOGLE MAPS      |
++------------------+
+
++------------------+
+| FOOTER           |
++------------------+
+Mobile: Những gì bị ẩn?
+Menu điều hướng dài (nếu có).
+Nội dung phụ không quan trọng.
+Chỉ giữ Logo + SĐT đặt bàn.
+Form nằm đâu?
+
+👉 Nằm dưới gallery ảnh và trên Google Maps.
+
+2. Wireframe Tablet (768px - 1023px)
+Grid ảnh chuyển thành 2 cột × 3 hàng.
+Form vẫn nằm trên Maps.
+Tận dụng chiều ngang nhiều hơn.
++--------------------------------+
+| Logo                ☎ Hotline  |
++--------------------------------+
+
+|                                |
+|          HERO IMAGE            |
+|                                |
+
++---------------+---------------+
+| Ảnh 1         | Ảnh 2         |
++---------------+---------------+
+| Ảnh 3         | Ảnh 4         |
++---------------+---------------+
+| Ảnh 5         | Ảnh 6         |
++---------------+---------------+
+
++-------------------------------+
+| FORM ĐẶT BÀN                  |
++-------------------------------+
+
++-------------------------------+
+| GOOGLE MAPS                   |
++-------------------------------+
+
++-------------------------------+
+| FOOTER                        |
++-------------------------------+
+Tablet: Grid ảnh mấy cột?
+
+👉 2 cột.
+
+Bản đồ nằm đâu?
+
+👉 Dưới Form đặt bàn.
+
+3. Wireframe Desktop (≥1024px)
+Dùng layout 2 cột.
+Gallery 3 cột × 2 hàng.
+Form và Maps đặt cạnh nhau.
++------------------------------------------------+
+| Logo                               Hotline ☎   |
++------------------------------------------------+
+
+|                                                |
+|                  HERO IMAGE                    |
+|                                                |
+
++-----------+-----------+-----------+
+| Ảnh 1     | Ảnh 2     | Ảnh 3     |
++-----------+-----------+-----------+
+| Ảnh 4     | Ảnh 5     | Ảnh 6     |
++-----------+-----------+-----------+
+
++------------------+------------------+
+| FORM ĐẶT BÀN     | GOOGLE MAPS      |
+|                  |                  |
+|                  |                  |
++------------------+------------------+
+
++--------------------------------------+
+| FOOTER                               |
++--------------------------------------+
+Desktop: Layout bao nhiêu cột?
+
+👉 Phần chính: 2 cột (Form | Maps).
+
+Sidebar có không?
+
+👉 Không cần sidebar vì đề không yêu cầu. Nếu thêm sẽ làm bố cục rối và tốn diện tích cho chức năng đặt bàn.
